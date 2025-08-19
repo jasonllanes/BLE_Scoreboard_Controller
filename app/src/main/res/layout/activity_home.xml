@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/tv_welcome"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Welcome!"
+        android:textSize="20sp"
+        android:gravity="center"
+        android:padding="10dp"/>
+    
+    <TextView
+        android:id="@+id/tv_status"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Status: Disconnected"
+        android:textSize="16sp"
+        android:gravity="center"
+        android:padding="5dp"
+        android:layout_marginBottom="16dp"/>
+
+    <Button
+        android:id="@+id/btn_connect_device"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Connect to Scoreboard"
+        android:layout_marginBottom="16dp"/>
+        
+    <Button
+        android:id="@+id/btn_control_panel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Open Control Panel"
+        android:layout_marginBottom="16dp"/>
+        
+    <Button
+        android:id="@+id/btn_settings"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Settings"
+        android:layout_marginBottom="16dp"/>
+        
+    <Button
+        android:id="@+id/btn_logout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Log Out"/>
+
+</LinearLayout>
