@@ -4,23 +4,30 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.preference.PreferenceManager;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class LoginActivity extends AppCompatActivity {
 
     private EditText etUsername;
     private EditText etPassword;
     private Button btnLogin;
-
-    // Demo credentials (in a real app, these would be securely stored/verified)
-    private static final String DEMO_USERNAME = "admin";
-    private static final String DEMO_PASSWORD = "password";
+    
+    // Firebase Authentication
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +38,9 @@ public class LoginActivity extends AppCompatActivity {
         etUsername = findViewById(R.id.et_username);
         etPassword = findViewById(R.id.et_password);
         btnLogin = findViewById(R.id.btn_login);
+        
+        // Initialize Firebase Auth
+        mAuth = FirebaseAuth.getInstance();
 
         // Set click listener for login button
         btnLogin.setOnClickListener(v -> attemptLogin());
@@ -69,23 +79,43 @@ public class LoginActivity extends AppCompatActivity {
                 focusView.requestFocus();
             }
         } else {
-            // Perform the login attempt
-            if (username.equals(DEMO_USERNAME) && password.equals(DEMO_PASSWORD)) {
-                // Login success
-                SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
-                prefs.edit().putBoolean("isLoggedIn", true).apply();
-
-                // Save username for welcome message
-                prefs.edit().putString("username", username).apply();
-
-                // Navigate to home screen
-                Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
-                startActivity(intent);
-                finish(); // Close this activity
-            } else {
-                // Login failed
-                Toast.makeText(this, "Invalid username or password", Toast.LENGTH_SHORT).show();
-            }
+            // Show progress (in a real app, use a progress dialog or indicator)
+            btnLogin.setEnabled(false);
+            btnLogin.setText("Signing in...");
+            
+            // Perform Firebase authentication
+            mAuth.signInWithEmailAndPassword(username, password)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        btnLogin.setEnabled(true);
+                        btnLogin.setText("Login");
+                        
+                        if (task.isSuccessful()) {
+                            // Login success
+                            FirebaseUser user = mAuth.getCurrentUser();
+                            SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(LoginActivity.this);
+                            
+                            // Save username for welcome message (use email or display name)
+                            String displayName = user.getDisplayName();
+                            String email = user.getEmail();
+                            prefs.edit().putString("username", displayName != null ? displayName : email).apply();
+                            
+                            // Navigate to home screen
+                            Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+                            startActivity(intent);
+                            finish(); // Close this activity
+                        } else {
+                            // Login failed - show generic message instead of exposing Firebase error details
+                            Toast.makeText(LoginActivity.this, "Invalid email or password", Toast.LENGTH_SHORT).show();
+                            
+                            // Log the actual error for debugging (optional)
+                            if (task.getException() != null) {
+                                Log.d("LoginActivity", "Auth error: " + task.getException().getMessage());
+                            }
+                        }
+                    }
+                });
         }
     }
 }
