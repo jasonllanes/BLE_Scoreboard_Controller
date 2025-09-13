@@ -8,6 +8,9 @@ import android.os.Looper;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.preference.PreferenceManager;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 public class MainActivity extends AppCompatActivity {
 
     private static final long SPLASH_DELAY = 1000; // 1 second delay
@@ -22,15 +25,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void checkLoginStatus() {
-        SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
-        boolean isLoggedIn = prefs.getBoolean("isLoggedIn", false);
-
+        // Check if user is signed in with Firebase
+        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+        
         Intent intent;
-        if (isLoggedIn) {
-            // User is already logged in, go to home screen
+        if (currentUser != null) {
+            // User is already signed in with Firebase, go to home screen
             intent = new Intent(MainActivity.this, HomeActivity.class);
         } else {
-            // User is not logged in, go to login screen
+            // User is not signed in, go to login screen
             intent = new Intent(MainActivity.this, LoginActivity.class);
         }
 
