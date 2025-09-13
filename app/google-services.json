@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "672603414807",
+    "project_id": "ble-proj",
+    "storage_bucket": "ble-proj.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:672603414807:android:dfb0b47bda207388c15752",
+        "android_client_info": {
+          "package_name": "com.example.ble_scoreboard"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB1TnNC_z1N19DxrQ30PnHPlboIOByu_x0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
