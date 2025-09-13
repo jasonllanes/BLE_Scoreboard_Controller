@@ -223,6 +223,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Shotclock/Game Horn"/>
+            
+        <Button
+            android:id="@+id/btn_resync"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Resync Scoreboard"
+            android:backgroundTint="#4CAF50"/>
 
         <LinearLayout
             android:layout_width="match_parent"

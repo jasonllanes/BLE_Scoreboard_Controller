@@ -220,6 +220,7 @@ public class ControlPanelActivity extends AppCompatActivity
         // Game Control Buttons
         Button btnNewGame = findViewById(R.id.btn_new_game);
         Button btnHorn = findViewById(R.id.btn_horn);
+        Button btnResync = findViewById(R.id.btn_resync);
         Button btnShotclock14 = findViewById(R.id.btn_shotclock_14);
         Button btnShotclock24 = findViewById(R.id.btn_shotclock_24);
         Button btnArrowLeft = findViewById(R.id.btn_arrow_left);
@@ -329,6 +330,13 @@ public class ControlPanelActivity extends AppCompatActivity
             }).start();
         });
         btnHorn.setOnClickListener(v -> sendCommandIfConnected(BLECommandUtil.CMD_GAMETIME_SHOTCLOCK_HORN));
+        
+        // Resync button - force immediate update of all digits to the scoreboard
+        btnResync.setOnClickListener(v -> {
+            tv_result.setText("Resyncing scoreboard...");
+            forceScoreboardUpdate();
+            tv_result.setText("Scoreboard resynced");
+        });
 
         // Set clock control listeners
         btnStartClock.setOnClickListener(v -> {
@@ -536,6 +544,20 @@ public class ControlPanelActivity extends AppCompatActivity
 
                 // Log every update in debug mode for verification
                 Log.d(TAG, "Sending to scoreboard: " + joinedDigits + " - Success: " + success);
+                
+                // Compatibility refresh: Send CMD_NULL after successful digit push to trigger display refresh
+                if (success) {
+                    // Small delay to ensure digits are processed before the refresh command
+                    try {
+                        Thread.sleep(50);
+                    } catch (InterruptedException e) {
+                        Log.e(TAG, "Sleep interrupted", e);
+                    }
+                    
+                    // Send null command to trigger display refresh without using horn
+                    sendCommandIfConnected(BLECommandUtil.CMD_NULL);
+                    Log.d(TAG, "Sent compatibility refresh command");
+                }
 
                 // Only update status text occasionally to avoid UI freezing
                 if (isForcedUpdate || currentTime - lastStatusUpdateTime > STATUS_UPDATE_INTERVAL) {
