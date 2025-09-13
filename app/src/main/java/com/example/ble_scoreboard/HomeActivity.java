@@ -21,6 +21,7 @@ import androidx.preference.PreferenceManager;
 
 import com.example.ble_scoreboard.utils.BLECommandUtil;
 import com.example.ble_scoreboard.utils.BLEManager;
+import com.google.firebase.auth.FirebaseAuth;
 
 @RequiresApi(api = Build.VERSION_CODES.S)
 public class HomeActivity extends AppCompatActivity implements BLEManager.ConnectionCallback {
@@ -165,7 +166,10 @@ public class HomeActivity extends AppCompatActivity implements BLEManager.Connec
     }
 
     private void logout() {
-        // Clear logged-in state
+        // Sign out from Firebase Auth
+        FirebaseAuth.getInstance().signOut();
+        
+        // Clear any legacy preferences (can be removed later when Firebase Auth is fully integrated)
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
         prefs.edit().putBoolean("isLoggedIn", false).apply();
 
