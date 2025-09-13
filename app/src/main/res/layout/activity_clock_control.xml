@@ -1,0 +1,486 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- Scoreboard Preview Section -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Scoreboard Preview"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_marginBottom="8dp"/>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="4dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Game Clock -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginBottom="16dp">
+
+                <TextView
+                    android:id="@+id/tv_clock_min1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="1"
+                    android:textSize="36sp"
+                    android:textStyle="bold"
+                    android:background="#222222"
+                    android:textColor="#FF0000"
+                    android:padding="8dp"/>
+
+                <TextView
+                    android:id="@+id/tv_clock_min2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textSize="36sp"
+                    android:textStyle="bold"
+                    android:background="#222222"
+                    android:textColor="#FF0000"
+                    android:padding="8dp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text=":"
+                    android:textSize="36sp"
+                    android:textStyle="bold"
+                    android:textColor="#FF0000"
+                    android:padding="8dp"/>
+
+                <TextView
+                    android:id="@+id/tv_clock_sec1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textSize="36sp"
+                    android:textStyle="bold"
+                    android:background="#222222"
+                    android:textColor="#FF0000"
+                    android:padding="8dp"/>
+
+                <TextView
+                    android:id="@+id/tv_clock_sec2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:textSize="36sp"
+                    android:textStyle="bold"
+                    android:background="#222222"
+                    android:textColor="#FF0000"
+                    android:padding="8dp"/>
+            </LinearLayout>
+
+            <!-- Team Scores -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="8dp">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="TEAM A"
+                        android:textStyle="bold"/>
+
+                    <TextView
+                        android:id="@+id/tv_score_team_a"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0"
+                        android:textSize="28sp"
+                        android:textStyle="bold"
+                        android:background="#222222"
+                        android:textColor="#FF0000"
+                        android:paddingStart="16dp"
+                        android:paddingEnd="16dp"/>
+                        
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="8dp">
+                        
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="FOULS:"
+                            android:textSize="12sp"/>
+                            
+                        <TextView
+                            android:id="@+id/tv_fouls_team_a"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="0"
+                            android:textSize="12sp"
+                            android:textStyle="bold"
+                            android:layout_marginStart="4dp"/>
+                    </LinearLayout>
+                    
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="TOL:"
+                            android:textSize="12sp"/>
+                            
+                        <TextView
+                            android:id="@+id/tv_tol_team_a"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="0"
+                            android:textSize="12sp"
+                            android:textStyle="bold"
+                            android:layout_marginStart="4dp"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="TEAM B"
+                        android:textStyle="bold"/>
+
+                    <TextView
+                        android:id="@+id/tv_score_team_b"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0"
+                        android:textSize="28sp"
+                        android:textStyle="bold"
+                        android:background="#222222"
+                        android:textColor="#FF0000"
+                        android:paddingStart="16dp"
+                        android:paddingEnd="16dp"/>
+                        
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="8dp">
+                        
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="FOULS:"
+                            android:textSize="12sp"/>
+                            
+                        <TextView
+                            android:id="@+id/tv_fouls_team_b"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="0"
+                            android:textSize="12sp"
+                            android:textStyle="bold"
+                            android:layout_marginStart="4dp"/>
+                    </LinearLayout>
+                    
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="TOL:"
+                            android:textSize="12sp"/>
+                            
+                        <TextView
+                            android:id="@+id/tv_tol_team_b"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="0"
+                            android:textSize="12sp"
+                            android:textStyle="bold"
+                            android:layout_marginStart="4dp"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Shot Clock -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="SHOT CLOCK:"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/tv_shotclock"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="24"
+                    android:textSize="24sp"
+                    android:textStyle="bold"
+                    android:background="#222222"
+                    android:textColor="#FF0000"
+                    android:layout_marginStart="8dp"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp"/>
+
+                <ImageView
+                    android:id="@+id/iv_arrow"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@android:drawable/arrow_up_float"
+                    android:layout_marginStart="16dp"
+                    android:rotation="270"/>
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- Clock Controls -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Clock Controls"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_marginBottom="8dp"/>
+
+    <!-- Game Clock Settings -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="8dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Game Clock:"
+            android:textStyle="bold"
+            android:layout_gravity="center_vertical"/>
+
+        <EditText
+            android:id="@+id/et_clock_minutes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:hint="Min"
+            android:inputType="number"
+            android:maxLength="2"
+            android:minWidth="50dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=":"
+            android:textStyle="bold"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="4dp"
+            android:layout_gravity="center_vertical"/>
+
+        <EditText
+            android:id="@+id/et_clock_seconds"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Sec"
+            android:inputType="number"
+            android:maxLength="2"
+            android:minWidth="50dp"/>
+
+        <Button
+            android:id="@+id/btn_set_clock"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Set"
+            android:layout_marginStart="8dp"/>
+    </LinearLayout>
+
+    <!-- Shot Clock Settings -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Shot Clock:"
+            android:textStyle="bold"
+            android:layout_gravity="center_vertical"/>
+
+        <EditText
+            android:id="@+id/et_shotclock_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:hint="Sec"
+            android:inputType="number"
+            android:maxLength="2"
+            android:minWidth="50dp"/>
+
+        <Button
+            android:id="@+id/btn_set_shotclock"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Set"
+            android:layout_marginStart="8dp"/>
+
+        <Button
+            android:id="@+id/btn_shotclock_reset_14"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="14s"
+            android:layout_marginStart="8dp"/>
+
+        <Button
+            android:id="@+id/btn_shotclock_reset_24"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="24s"
+            android:layout_marginStart="8dp"/>
+    </LinearLayout>
+
+    <!-- Clock Control Buttons -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginBottom="16dp">
+
+        <Button
+            android:id="@+id/btn_clock_start"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="START"
+            android:textStyle="bold"
+            android:backgroundTint="#4CAF50"
+            android:layout_marginEnd="4dp"/>
+
+        <Button
+            android:id="@+id/btn_clock_stop"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="STOP"
+            android:textStyle="bold"
+            android:backgroundTint="#F44336"
+            android:layout_marginStart="4dp"/>
+    </LinearLayout>
+    
+    <!-- Device Status Indicators -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Device Status"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_marginBottom="8dp"/>
+        
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="8dp">
+        
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Main Clock:"
+            android:textStyle="bold"/>
+            
+        <TextView
+            android:id="@+id/tv_main_clock_status"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Disconnected"
+            android:textColor="#F44336"/>
+    </LinearLayout>
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="8dp">
+        
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Shot Clock 1:"
+            android:textStyle="bold"/>
+            
+        <TextView
+            android:id="@+id/tv_shotclock1_status"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Disconnected"
+            android:textColor="#F44336"/>
+    </LinearLayout>
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Shot Clock 2:"
+            android:textStyle="bold"/>
+            
+        <TextView
+            android:id="@+id/tv_shotclock2_status"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Disconnected"
+            android:textColor="#F44336"/>
+    </LinearLayout>
+</LinearLayout>
